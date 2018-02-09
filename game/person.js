@@ -18,6 +18,6 @@ function Person(gender, color, x, y, depth) {
       ellipse(this.x, this.y, this.size, this.size);
     }
     this.textBox.position(this.x+5, this.y+30).elt.maxLength = 2;
-    this.textBox.style("width", "20px");
+    this.textBox.style("width", "20px").style("border","none").style("border-bottom","blue");
   }
 }
