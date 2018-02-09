@@ -1,0 +1,8 @@
+{
+  "name": "Pedigree Charts",
+  "manifest_version": 2,
+  "version": "1.1",
+  "browser_action": {
+    "default_popup": "game/index.html"
+  }
+}
