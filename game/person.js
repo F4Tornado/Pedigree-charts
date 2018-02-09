@@ -1,10 +1,11 @@
-function Person(gender, color, x, y) {
+function Person(gender, color, x, y, depth) {
   this.size = 20;
   this.gender = gender;
   this.color = color;
   this.x = x;
   this.y = y;
   this.textBox = createInput();
+  this.depth = depth;
   this.show = () => {
     if (gender === "male") {
       stroke(51);
@@ -16,6 +17,7 @@ function Person(gender, color, x, y) {
       fill(color);
       ellipse(this.x, this.y, this.size, this.size);
     }
-    this.textBox.position(this.x, this.y+30).elt.maxLength = 2;
+    this.textBox.position(this.x+5, this.y+30).elt.maxLength = 2;
+    this.textBox.style("width", "20px");
   }
 }
