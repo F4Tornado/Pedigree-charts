@@ -11,6 +11,7 @@ function Person(gender, color, x, y) {
       fill(color);
       rect(this.x, this.y, this.size, this.size);
     } else {
+      ellipseMode(CORNER);
       stroke(51);
       fill(color);
       ellipse(this.x, this.y, this.size, this.size);
