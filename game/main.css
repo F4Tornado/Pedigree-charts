@@ -2,7 +2,7 @@ input {
   border-bottom: grey;
   border: none;
   padding-top: 6px;
-  width: 3vw;
+  width: 20px;
 }
 input:focus {
   border-bottom: blue;
