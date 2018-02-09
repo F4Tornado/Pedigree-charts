@@ -1,0 +1,7 @@
+input {
+  border-bottom: grey;
+  border: none;
+}
+input:focus {
+  border-bottom: blue;
+}
