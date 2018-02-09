@@ -4,6 +4,7 @@ function Person(gender, color, x, y) {
   this.color = color;
   this.x = x;
   this.y = y;
+  this.textBox = createInput();
   this.show = () => {
     if (gender === "male") {
       stroke(51);
@@ -14,5 +15,6 @@ function Person(gender, color, x, y) {
       fill(color);
       ellipse(this.x, this.y, this.size, this.size);
     }
+    this.textBox.position(this.x, this.y+10)
   }
 }
