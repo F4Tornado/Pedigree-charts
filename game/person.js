@@ -1,4 +1,4 @@
-function Person(gender, color, x, y, depth) {
+function Person(gender, color, x, y, depth, married) {
   this.size = 20;
   this.gender = gender;
   this.color = color;
@@ -6,6 +6,10 @@ function Person(gender, color, x, y, depth) {
   this.y = y;
   this.textBox = createInput();
   this.depth = depth;
+  this.married = married;
+  for (let i = 0; i < random([1, 2, 3, 4]); i++) {
+    children.push = Person(random(["male", "female"]), )
+  }
   this.show = () => {
     if (gender === "male") {
       stroke(51);
