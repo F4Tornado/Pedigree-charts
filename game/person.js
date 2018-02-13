@@ -1,4 +1,4 @@
-function Person(gender, color, x, y, depth, married) {
+function Person(gender, color, x, y, depth) {
   this.size = 20;
   this.gender = gender;
   this.color = color;
@@ -6,7 +6,7 @@ function Person(gender, color, x, y, depth, married) {
   this.y = y;
   this.textBox = createInput();
   this.depth = depth;
-  this.married = married;
+  this.married;
   for (let i = 0; i < random([1, 2, 3, 4]); i++) {
     // children.push = Person(random(["male", "female"]), random([color(51), color(235)]));
   }
