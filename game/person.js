@@ -8,9 +8,12 @@ function Person(gender, color, x, y, depth, married) {
   this.depth = depth;
   this.married = married;
   for (let i = 0; i < random([1, 2, 3, 4]); i++) {
-    children.push = Person(random(["male", "female"]), )
+    // children.push = Person(random(["male", "female"]), random([color(51), color(235)]));
   }
   this.show = () => {
+    stroke(114, 168, 255);
+    strokeWeight(2);
+    line(this.x-3, this.y+40, this.x+18, this.y+40);
     if (gender === "male") {
       stroke(51);
       fill(color);
