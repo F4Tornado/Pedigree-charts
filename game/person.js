@@ -14,6 +14,8 @@ function Person(gender, color, x, y, depth) {
     stroke(114, 168, 255);
     strokeWeight(2);
     line(this.x-3, this.y+40, this.x+18, this.y+40);
+    stroke(255, 113, 224);
+    line(this.x+this.size, this.y+(this.size/2), people[this.married].x+this.size, people[this.married].y+(this.size/2));
     if (gender === "male") {
       stroke(51);
       fill(color);
