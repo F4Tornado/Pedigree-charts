@@ -13,10 +13,20 @@ function Person(gender, genotype, x, y, depth) {
   this.textBox = createInput();
   this.depth = depth;
   this.married;
+  this.children = [];
   // for (let i = 0; i < random([1, 2, 3, 4]); i++) {
   //   children.push = Person(random(["male", "female"]), random([color(51), color(235)]));
   // }
   this.show = () => {
+    if (this.theirCombos == undefined && people[this.married].combos != undefined) {
+      this.theirCombos = people[this.married].combos;
+      for (let i = 0; i < 2; i++) {
+        for (let j = 0; j < 2; j++) {
+          this.children.push(this.mix(this.theirCombos[i], this.combos[i]));
+        }
+      }
+      console.log(this.children, this.genotype, people[this.married].genotype);
+    }
     stroke(114, 168, 255);
     strokeWeight(2);
     line(this.x-3, this.y+40, this.x+18, this.y+40);
@@ -35,4 +45,50 @@ function Person(gender, genotype, x, y, depth) {
     this.textBox.position(this.x+5, this.y+30).elt.maxLength = 2;
     this.textBox.style("width", "20px").style("border","none").style("border-bottom","blue");
   }
+  this.thisCombos = () => {
+    let thisCombos = [];
+    for (let i = 0; i < 4; i++) {
+      thisCombos.push(this.combo(this.genotype, i));
+    }
+    return thisCombos
+  }
+  this.marriedCombos = () => {
+
+  }
+  this.combo = (geno, ie) => {
+    let i = ie.toString(2).split("");
+    for (j = 0; j < geno.length / 2; j++) {
+      if (i[j] == undefined) {
+        i.unshift(0);
+      } else {
+        i[j] = parseInt(i[j], 10);
+      }
+    }
+    let ret = "";
+    for (let j = 0; j < geno.length / 2; j++) {
+      ret += geno[(j * 2) + i[j]];
+    }
+    return ret;
+  }
+  this.mix = (gameteAA, gameteBB) => {
+    let gameteA = gameteAA.split("");
+    let gameteB = gameteBB.split("");
+    let ret = "";
+    for (let i = 0; i < gameteA.length; i++) {
+      let add = "";
+      let aUpper = gameteA[i].toUpperCase() == gameteA[i];
+      let bUpper = gameteB[i].toUpperCase() == gameteB[i];
+      if ((aUpper && bUpper) || (aUpper && !bUpper) || (!aUpper && !bUpper)) {
+        add+=gameteA[i];
+        add+=gameteB[i];
+      } else if (!aUpper && bUpper) {
+        add+=gameteB[i];
+        add+=gameteA[i];
+      }
+      ret+=add;
+    }
+    return ret;
+  }
+  this.combos = this.thisCombos();
+  this.theirCombos;
 }

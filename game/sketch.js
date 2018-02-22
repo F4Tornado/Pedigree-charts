@@ -6,7 +6,7 @@ function setup() {
   createCanvas(600, 600);
   people.push(new Person("male", "Aa", 10, 10, 1));
   people.push(new Person("female", "AA", 200, 10, 1));
-  people.push(new Person("male", "aa", 390, 10, 1));
+  people.push(new Person("male", "Aa", 390, 10, 1));
   people.push(new Person("female", "aa", 570, 10, 1));
   people[0].married = 1;
   people[1].married = 0;
