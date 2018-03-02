@@ -21,7 +21,8 @@ function Person(gender, genotype, x, y, depth) {
         if (this.gender == "male" && this.depth != 0) {
           for (let i = 0; i < 2; i++) {
             for (let j = 0; j < 2; j++) {
-              this.children.push(new Person(random("male", "female"), this.mix(this.theirCombos[i], this.combos[i]), lerp(this.x+30, this.x+150, map((i+j), 0, 2, 0, 1)), this.y+50, this.depth-1));
+              let num = parseInt(""+i+j, 2);
+              this.children.push(new Person(random(["male", "female"]), this.mix(this.theirCombos[i], this.combos[i]), lerp(this.x+30, this.x+200, map(num, 0, 3, 0, 1)), this.y+50, this.depth-1));
             }
           }
         }
