@@ -22,11 +22,18 @@ function Person(gender, genotype, x, y, depth) {
           for (let i = 0; i < 2; i++) {
             for (let j = 0; j < 2; j++) {
               let num = parseInt(""+i+j, 2);
-              this.children.push(new Person(random(["male", "female"]), this.mix(this.theirCombos[i], this.combos[i]), lerp(this.x+30, this.x+200, map(num, 0, 3, 0, 1)), this.y+50, this.depth-1));
+              let gender;
+              if (num == 0) {
+                gender = "male";
+              } else if (num == 3) {
+                gender = "female";
+              } else {
+                gender = random(["male", "female"]);
+              }
+              this.children.push(new Person(gender, this.mix(this.theirCombos[i], this.combos[i]), lerp(this.x+30, this.x+200, map(num, 0, 3, 0, 1)), this.y+50, this.depth-1));
             }
           }
         }
-        console.log(this.children, this.genotype, people[this.married].genotype);
       }
     }
     for (child of this.children) {

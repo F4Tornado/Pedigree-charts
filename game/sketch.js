@@ -1,13 +1,13 @@
 let people = [];
-let maxDepth = 2;
+let maxDepth = 4;
 
 function setup() {
   smooth();
   createCanvas(600, 600);
-  people.push(new Person("male", "Aa", 10, 10, maxDepth));
-  people.push(new Person("female", "AA", 250, 10, maxDepth));
-  people.push(new Person("male", "Aa", 340, 10, maxDepth));
-  people.push(new Person("female", "aa", 570, 10, maxDepth));
+  people.push(new Person("male", random(["AA", "Aa", "aa"]), 10, 10, maxDepth));
+  people.push(new Person("female", random(["AA", "Aa", "aa"]), 250, 10, maxDepth));
+  people.push(new Person("male", random(["AA", "Aa", "aa"]), 340, 10, maxDepth));
+  people.push(new Person("female", random(["AA", "Aa", "aa"]), 570, 10, maxDepth));
   people[0].married = 1;
   people[1].married = 0;
   people[2].married = 3;
