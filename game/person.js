@@ -15,14 +15,13 @@ function Person(gender, genotype, x, y, depth) {
   this.married;
   this.children = [];
   this.show = () => {
-    point(this.x, this.y);
     if (this.married != undefined) {
       if (this.theirCombos == undefined && people[this.married].combos != undefined) {
         this.theirCombos = people[this.married].combos;
-        if (this.gender == "male") {
+        if (this.gender == "male" && this.depth != 0) {
           for (let i = 0; i < 2; i++) {
             for (let j = 0; j < 2; j++) {
-              this.children.push(new Person(random("male", "female"), this.mix(this.theirCombos[i], this.combos[i]), lerp(this.x+30, this.x+190, map((i+j), 0, 4, 0, 1)), this.y+50, this.depth-1));
+              this.children.push(new Person(random("male", "female"), this.mix(this.theirCombos[i], this.combos[i]), lerp(this.x+30, this.x+150, map((i+j), 0, 2, 0, 1)), this.y+50, this.depth-1));
             }
           }
         }
@@ -36,6 +35,9 @@ function Person(gender, genotype, x, y, depth) {
     strokeWeight(2);
     line(this.x-3, this.y+40, this.x+18, this.y+40);
     stroke(255, 113, 224);
+    if (this.depth != maxDepth) {
+      line(this.x+(this.size/2), this.y-(50-(this.size/2)), this.x+(this.size/2), this.y+(this.size/2));
+    }
     if (this.married != undefined) {
       line(this.x+this.size, this.y+(this.size/2), people[this.married].x+this.size, people[this.married].y+(this.size/2));
     }
