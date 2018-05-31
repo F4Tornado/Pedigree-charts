@@ -1,4 +1,4 @@
-function Person(gender, genotype, x, y, depth) {
+function Person(gender, genotype, x, y, depth, parent) {
   this.size = 20;
   this.gender = gender;
   this.genotype = genotype;
@@ -14,10 +14,45 @@ function Person(gender, genotype, x, y, depth) {
   this.depth = depth;
   this.married;
   this.children = [];
+  this.parenty = parent;
   this.show = () => {
+    let shouldGetMarried = false;
+    let parentoo;
+    for (let i = 0; i < maxDepth-this.depth-1; i++) {
+      parentoo = parent.parenty;
+    }
+    if (parentoo.getIndex() == 0) {
+      
+    }
+    let people = peopleo;
+    let married;
+    if (this.depth == maxDepth) {
+      married = people[this.married];
+    } else if (this.depth <= maxDepth && this.depth >= 0) {
+      whut = (deep) => {
+        let parent = this;
+        //get parent
+        for (let i = 0; i < maxDepth-this.depth-1; i++) {
+          parent = parent.parenty;
+        }
+        //get married parent
+        let otherParent = peopleo[(parent.whutIndex()+2)%5];
+
+        let married = otherParent;
+        //get married
+        for (let i = 0; i < maxDepth-this.depth-1; i++) {
+          married = married.children[0];
+        }
+
+        times++;
+
+        return married;
+      }
+      married = whut(this.depth);
+    }
     if (this.married != undefined) {
-      if (this.theirCombos == undefined && people[this.married].combos != undefined) {
-        this.theirCombos = people[this.married].combos;
+      if (this.theirCombos == undefined && married.combos != undefined) {
+        this.theirCombos = married.combos;
         if (this.gender == "male" && this.depth != 0) {
           for (let i = 0; i < 2; i++) {
             for (let j = 0; j < 2; j++) {
@@ -30,7 +65,7 @@ function Person(gender, genotype, x, y, depth) {
               } else {
                 gender = random(["male", "female"]);
               }
-              this.children.push(new Person(gender, this.mix(this.theirCombos[i], this.combos[i]), lerp(this.x+30, this.x+200, map(num, 0, 3, 0, 1)), this.y+50, this.depth-1));
+              this.children.push(new Person(gender, this.mix(this.theirCombos[i], this.combos[i]), lerp(this.x+30, this.x+200, map(num, 0, 3, 0, 1)), this.y+50, this.depth-1), this);
             }
           }
         }
@@ -47,7 +82,7 @@ function Person(gender, genotype, x, y, depth) {
       line(this.x+(this.size/2), this.y-(50-(this.size/2)), this.x+(this.size/2), this.y+(this.size/2));
     }
     if (this.married != undefined) {
-      line(this.x+this.size, this.y+(this.size/2), people[this.married].x+this.size, people[this.married].y+(this.size/2));
+      line(this.x+this.size, this.y+(this.size/2), married.x+this.size, people[this.married].y+(this.size/2));
     }
     if (gender === "male") {
       stroke(51);
@@ -106,6 +141,17 @@ function Person(gender, genotype, x, y, depth) {
     }
     return ret;
   }
+
+  this.whutIndex = function() {
+    if (this.depth == maxDepth) {
+      for (let i = 0; i < peopleo.length; i++) {
+        if (peopleo[i] == this) {
+          return i;
+        }
+      }
+    }
+  }
+
   this.combos = this.thisCombos();
   this.theirCombos;
 }
